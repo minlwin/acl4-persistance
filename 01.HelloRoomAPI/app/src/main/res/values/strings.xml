@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">01. Hello Room API</string>
+    <string name="enter_message">Enter Message</string>
+</resources>

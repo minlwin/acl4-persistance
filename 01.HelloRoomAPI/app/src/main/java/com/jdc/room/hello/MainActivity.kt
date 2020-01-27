@@ -1,8 +1,6 @@
 package com.jdc.room.hello
 
-import android.os.AsyncTask
 import android.os.Bundle
-import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.jdc.room.hello.adapter.MessageAdapter
@@ -26,42 +24,13 @@ class MainActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
 
-        SelectMessageTask(dao, adapter).execute()
+        adapter.submitList(dao.findAll())
 
         fab.setOnClickListener {
-            InsertMessageTask(dao, adapter, messageInput).execute()
+            dao.create(Message(data = messageInput.text.toString()))
+            adapter.submitList(dao.findAll())
+            messageInput.setText("")
         }
     }
 
-    class SelectMessageTask(private val dao: MessageDao, private val adapter: MessageAdapter) :
-        AsyncTask<Void, Void, List<Message>>() {
-
-        override fun doInBackground(vararg params: Void?): List<Message> {
-            return dao.findAll()
-        }
-
-        override fun onPostExecute(result: List<Message>?) {
-            adapter.submitList(result)
-        }
-    }
-
-    class InsertMessageTask(private val dao: MessageDao, private val adapter: MessageAdapter, private val input: EditText) :
-        AsyncTask<Void, Void, List<Message>>() {
-
-        private lateinit var data:String
-
-        override fun onPostExecute(result: List<Message>?) {
-            adapter.submitList(result)
-            input.setText("")
-        }
-
-        override fun onPreExecute() {
-            data = input.text.toString()
-        }
-
-        override fun doInBackground(vararg params: Void?): List<Message> {
-            dao.create(Message(data = data))
-            return dao.findAll()
-        }
-    }
 }

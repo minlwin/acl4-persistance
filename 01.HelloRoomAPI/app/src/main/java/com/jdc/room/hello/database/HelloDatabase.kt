@@ -20,6 +20,7 @@ abstract class HelloDatabase : RoomDatabase() {
 
         fun get(context: Context) = if (::database.isInitialized) database else
             Room.databaseBuilder(context, HelloDatabase::class.java, "com.jdc.room.hello.HelloDB")
+                .allowMainThreadQueries()
                 .build().also { database = it }
     }
 }

@@ -11,15 +11,12 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var dao: MessageDao
-    private lateinit var adapter: MessageAdapter
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        dao = HelloDatabase.get(this).messageDao()
-        adapter = MessageAdapter()
+        val dao = HelloDatabase.get(this).messageDao()
+        val adapter = MessageAdapter()
 
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter

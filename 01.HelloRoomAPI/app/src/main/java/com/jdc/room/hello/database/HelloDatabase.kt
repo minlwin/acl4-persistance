@@ -18,9 +18,15 @@ abstract class HelloDatabase : RoomDatabase() {
 
         private lateinit var database: HelloDatabase
 
-        fun get(context: Context) = if (::database.isInitialized) database else
-            Room.databaseBuilder(context, HelloDatabase::class.java, "com.jdc.room.hello.HelloDB")
+        fun get(context: Context) =
+            if (::database.isInitialized)
+                database
+            else
+                Room.databaseBuilder(context,
+                    HelloDatabase::class.java,
+                    "com.jdc.room.hello.HelloDB")
                 .allowMainThreadQueries()
-                .build().also { database = it }
+                .build()
+                    .also { database = it }
     }
 }

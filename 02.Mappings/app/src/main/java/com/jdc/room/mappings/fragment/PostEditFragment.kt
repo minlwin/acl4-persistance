@@ -1,0 +1,33 @@
+package com.jdc.room.mappings.fragment
+
+
+import android.os.Bundle
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.navigation.findNavController
+
+import com.jdc.room.mappings.R
+import kotlinx.android.synthetic.main.fragment_post_edit.*
+
+/**
+ * A simple [Fragment] subclass.
+ */
+class PostEditFragment : Fragment() {
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return inflater.inflate(R.layout.fragment_post_edit, container, false)
+    }
+
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+        button2.setOnClickListener {
+            it.findNavController().navigate(R.id.action_edit_to_details)
+        }
+    }
+}

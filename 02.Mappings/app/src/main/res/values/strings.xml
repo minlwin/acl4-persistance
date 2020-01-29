@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">02. Mappings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="comment">Comment</string>
+    <string name="post_title">Post Title</string>
+    <string name="_2020_01_28_18_00">2020/01/28 18:00</string>
+    <string name="the_type_affinity_for_the_column_which_will_be_used_when_constructing_the_database">The type affinity for the column, which will be used when constructing the database.</string>
+    <string name="post_list">Post List</string>
+    <string name="content">Content</string>
+    <string name="save">Save</string>
+    <string name="the_following_additional_attributes_can_be_changed_in_textappearance_and_applied_to_a_materialtextview">The following additional attributes can be changed in TextAppearance and applied to a MaterialTextView</string>
+    <string name="show">Show</string>
+</resources>

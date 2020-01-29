@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.item_comment.view.*
 class CommentAdapter:ListAdapter<Comment, CommentAdapter.CommentVH>(
     object : DiffUtil.ItemCallback<Comment>() {
         override fun areItemsTheSame(oldItem: Comment, newItem: Comment) =
-            oldItem.postId == newItem.postId && oldItem.serialNumber == newItem.serialNumber
+            oldItem.id == newItem.id
 
         override fun areContentsTheSame(oldItem: Comment, newItem: Comment) =
             oldItem == newItem

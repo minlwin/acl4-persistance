@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.jdc.room.mappings.R
 import com.jdc.room.mappings.db.PostDatabase
 import com.jdc.room.mappings.db.entity.Comment
+import com.jdc.room.mappings.db.entity.CommentPK
 import com.jdc.room.mappings.fragment.adapter.CommentAdapter
 import com.jdc.room.mappings.fragment.utils.dateFormat
 import kotlinx.android.synthetic.main.fragment_post_details.*
@@ -43,7 +44,10 @@ class PostDetailsFragment : Fragment() {
 
             title.text = postWithComments.post.title
             content.text = postWithComments.post.contents
-            creation.text = dateFormat.format(postWithComments.post.creation)
+
+            postWithComments.post.creation?.also { date ->
+                creation.text = dateFormat.format(date)
+            }
 
             adapter.submitList(postWithComments.comments)
 
@@ -57,8 +61,10 @@ class PostDetailsFragment : Fragment() {
         commentBtn.setOnClickListener { _ ->
             postWithComments?.also {
                 val newComment = Comment(
-                    it.post.id,
-                    it.comments.size + 1,
+                    CommentPK(
+                        it.post.id,
+                        it.comments.size + 1
+                    ),
                     comment.text.toString(),
                     Date()
                 )

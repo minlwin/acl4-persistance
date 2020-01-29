@@ -1,12 +1,9 @@
 package com.jdc.room.mappings.db.entity
 
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.ForeignKey
+import androidx.room.*
 import java.util.*
 
 @Entity(
-    primaryKeys = ["postId", "serialNumber"],
     foreignKeys = [
         ForeignKey(
             entity = Post::class,
@@ -16,8 +13,13 @@ import java.util.*
     ]
 )
 data class Comment(
-    var postId:Int,
-    var serialNumber:Int,
+    @PrimaryKey @Embedded
+    var id:CommentPK,
     var comment:String?,
     var creation:Date?
+)
+
+data class CommentPK(
+    var postId:Int,
+    var serialNumber:Int
 )

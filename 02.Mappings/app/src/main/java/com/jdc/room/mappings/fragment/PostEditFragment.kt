@@ -9,11 +9,11 @@ import android.view.ViewGroup
 import androidx.navigation.findNavController
 
 import com.jdc.room.mappings.R
+import com.jdc.room.mappings.db.PostDatabase
+import com.jdc.room.mappings.db.entity.Post
 import kotlinx.android.synthetic.main.fragment_post_edit.*
+import java.util.*
 
-/**
- * A simple [Fragment] subclass.
- */
 class PostEditFragment : Fragment() {
 
     override fun onCreateView(
@@ -26,8 +26,21 @@ class PostEditFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        button2.setOnClickListener {
-            it.findNavController().navigate(R.id.action_edit_to_details)
+        val dao = PostDatabase.database(requireContext()).postDao()
+
+        button2.setOnClickListener { _ ->
+
+            val post = Post(
+                title = title.text.toString(),
+                contents = content.text.toString(),
+                creation = Date()
+            )
+
+            val postId = dao.create(post)
+
+            view.findNavController().navigate(R.id.action_edit_to_details, Bundle().also {
+                it.putInt("postId", postId.toInt())
+            })
         }
     }
 }

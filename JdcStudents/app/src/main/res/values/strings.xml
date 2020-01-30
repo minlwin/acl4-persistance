@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Jdc Students</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="course_name">Course Name</string>
+    <string name="course_duration">Course Duration</string>
+    <string name="fees_of_course">Fees of Course</string>
+    <string name="descriptions">Descriptions</string>
+    <string name="save_coursse">Save Coursse</string>
+</resources>

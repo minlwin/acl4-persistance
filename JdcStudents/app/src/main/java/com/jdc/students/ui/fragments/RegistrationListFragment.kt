@@ -9,16 +9,18 @@ import android.view.ViewGroup
 
 import com.jdc.students.R
 
-class CourseEditFragment : Fragment() {
+/**
+ * A simple [Fragment] subclass.
+ */
+class RegistrationListFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_course_edit, container, false)
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_registration_list, container, false)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        
-    }
+
 }

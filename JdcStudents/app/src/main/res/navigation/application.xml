@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/application"
+    app:startDestination="@id/home">
+
+    <fragment
+        android:id="@+id/home"
+        android:name="com.jdc.students.ui.fragments.HomeFragment"
+        android:label="Home"
+        tools:layout="@layout/fragment_home" />
+    <navigation
+        android:id="@+id/courses"
+        app:startDestination="@id/courses" >
+        <fragment
+            android:id="@+id/courses"
+            android:name="com.jdc.students.ui.fragments.CourseListFragment"
+            android:label="Courses"
+            tools:layout="@layout/fragment_course_list">
+            <action
+                android:id="@+id/action_courses_to_edit_course"
+                app:destination="@id/edit_course"
+                app:launchSingleTop="true"
+                app:popUpTo="@+id/courses"
+                app:popUpToInclusive="true" />
+            <action
+                android:id="@+id/action_courses_to_details_course"
+                app:destination="@id/details_course"
+                app:launchSingleTop="true"
+                app:popUpTo="@+id/courses"
+                app:popUpToInclusive="true" />
+        </fragment>
+        <fragment
+            android:id="@+id/edit_course"
+            android:name="com.jdc.students.ui.fragments.CourseEditFragment"
+            android:label="Add Course"
+            tools:layout="@layout/fragment_course_edit" >
+            <action
+                android:id="@+id/action_course_save"
+                app:destination="@id/details_course"
+                app:launchSingleTop="true"
+                app:popUpTo="@+id/edit_course"
+                app:popUpToInclusive="true" />
+        </fragment>
+        <fragment
+            android:id="@+id/details_course"
+            android:name="com.jdc.students.ui.fragments.CourseDetailsFragment"
+            android:label="fragment_course_details"
+            tools:layout="@layout/fragment_course_details" >
+            <action
+                android:id="@+id/action_details_course_to_edit_course"
+                app:destination="@id/edit_course" />
+        </fragment>
+    </navigation>
+    <navigation
+        android:id="@+id/students"
+        app:startDestination="@id/students" >
+        <fragment
+            android:id="@+id/students"
+            android:name="com.jdc.students.ui.fragments.StudentListFragment"
+            android:label="Students"
+            tools:layout="@layout/fragment_student_list">
+            <action
+                android:id="@+id/action_students_to_edit_student"
+                app:destination="@id/edit_student"
+                app:launchSingleTop="true"
+                app:popUpTo="@+id/students"
+                app:popUpToInclusive="true" />
+        </fragment>
+        <fragment
+            android:id="@+id/edit_student"
+            android:name="com.jdc.students.ui.fragments.StudentEditFragment"
+            android:label="Edit Student"
+            tools:layout="@layout/fragment_student_edit" />
+    </navigation>
+    <navigation
+        android:id="@+id/registrations"
+        app:startDestination="@id/registrations" >
+        <fragment
+            android:id="@+id/registrations"
+            android:name="com.jdc.students.ui.fragments.RegistrationListFragment"
+            android:label="Registrations"
+            tools:layout="@layout/fragment_registration_list">
+            <action
+                android:id="@+id/action_registrations_to_edit_registration"
+                app:destination="@id/edit_registration" />
+        </fragment>
+        <fragment
+            android:id="@+id/edit_registration"
+            android:name="com.jdc.students.ui.fragments.RegistrationEditFragment"
+            android:label="Add Registration"
+            tools:layout="@layout/fragment_registration_edit" />
+    </navigation>
+    <navigation
+        android:id="@+id/classRooms"
+        app:startDestination="@id/classRooms" >
+        <fragment
+            android:id="@+id/classRooms"
+            android:name="com.jdc.students.ui.fragments.ClassRoomListFragment"
+            android:label="Class Rooms"
+            tools:layout="@layout/fragment_class_room_list">
+            <action
+                android:id="@+id/action_classRooms_to_edit_class"
+                app:destination="@id/edit_class" />
+        </fragment>
+        <fragment
+            android:id="@+id/edit_class"
+            android:name="com.jdc.students.ui.fragments.ClassRoomEditFragment"
+            android:label="Add Class"
+            tools:layout="@layout/fragment_class_room_edit" />
+    </navigation>
+</navigation>

@@ -4,12 +4,15 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.jdc.students.db.dao.ClassRoomDao
 import com.jdc.students.db.dao.CourseDao
+import com.jdc.students.db.entity.ClassRoom
 import com.jdc.students.db.entity.Course
 
 @Database(
     entities = [
-        Course::class
+        Course::class,
+        ClassRoom::class
     ],
     version = 1,
     exportSchema = false
@@ -17,6 +20,7 @@ import com.jdc.students.db.entity.Course
 abstract class StudentDatabase:RoomDatabase() {
 
     abstract fun courseDao():CourseDao
+    abstract fun classRoomDao():ClassRoomDao
 
     companion object {
         private lateinit var db:StudentDatabase

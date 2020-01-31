@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="com.jdc.students.ui.converter.IntegerConverter" alias="intConverter" />
+        <import type="com.jdc.students.ui.converter.DateFormatter" alias="dateFormat" />
+        <variable
+            name="data"
+            type="com.jdc.students.db.entity.ClassRoom" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/cardBackground"
+            app:cardPreventCornerOverlap="true"
+            app:cardUseCompatPadding="true">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/startDate"
+                    style="@style/AppTheme.Card.Header"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@{dateFormat.format(data.startDate)}"
+                    app:layout_constraintStart_toEndOf="@+id/imageView"
+                    app:layout_constraintTop_toTopOf="@+id/imageView" />
+
+                <TextView
+                    android:id="@+id/days"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@{data.days}"
+                    app:layout_constraintStart_toStartOf="@+id/startDate"
+                    app:layout_constraintTop_toBottomOf="@+id/startDate" />
+
+                <TextView
+                    android:id="@+id/times"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@{data.startTime + `-` + data.endTime}"
+                    app:layout_constraintStart_toStartOf="@+id/days"
+                    app:layout_constraintTop_toBottomOf="@+id/days" />
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:adjustViewBounds="false"
+                    android:contentDescription="@string/class_icon"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_class_rooms" />
+
+                <TextView
+                    android:id="@+id/fees"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:text="@{intConverter.intToString(data.fees) + ` MMK`}"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/times"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:text="@string/fees"
+                    app:layout_constraintBottom_toTopOf="@+id/fees"
+                    app:layout_constraintEnd_toEndOf="@+id/fees" />
+
+                <Button
+                    android:id="@+id/editBtn"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:text="@string/edit"
+                    app:layout_constraintBottom_toBottomOf="@+id/addRegistrationBtn"
+                    app:layout_constraintEnd_toStartOf="@+id/addRegistrationBtn"
+                    app:layout_constraintTop_toTopOf="@+id/addRegistrationBtn" />
+
+                <Button
+                    android:id="@+id/addRegistrationBtn"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="16dp"
+                    android:text="@string/add_registration"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/fees"
+                    app:layout_constraintTop_toBottomOf="@+id/fees" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+</layout>

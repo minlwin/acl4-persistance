@@ -5,6 +5,7 @@
 
     <data>
         <import type="com.jdc.students.ui.converter.DoubleConverter" alias="MyDouble" />
+        <import type="com.jdc.students.ui.converter.IntegerConverter" alias="intConvert" />
         <variable
             name="model"
             type="com.jdc.students.ui.model.CourseEditModel" />
@@ -64,7 +65,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:text="@={model.data.fees}"
+                android:text="@={intConvert.intToString(model.data.fees)}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/fees_of_course"

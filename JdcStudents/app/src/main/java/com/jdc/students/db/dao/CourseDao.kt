@@ -1,10 +1,7 @@
 package com.jdc.students.db.dao
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Update
+import androidx.room.*
 import com.jdc.students.db.dto.CourseWithClasses
 import com.jdc.students.db.entity.Course
 
@@ -12,17 +9,18 @@ import com.jdc.students.db.entity.Course
 interface CourseDao {
 
     @Insert
-    fun create(course: Course):Long
+    suspend fun create(course: Course):Long
 
     @Update
-    fun update(course: Course)
+    suspend fun update(course: Course)
 
     @Query("select * from Course")
-    fun findAll():List<Course>
+    suspend fun findAll():List<Course>
+
+    @Transaction
+    @Query("select * from Course where id = :id")
+    suspend fun findWithClassesById(id:Long):CourseWithClasses
 
     @Query("select * from Course where id = :id")
-    fun findWithClassesById(id:Long):CourseWithClasses
-
-    @Query("select * from Course")
-    fun findById(id:Long):Course
+    suspend fun findById(id:Long):Course
 }

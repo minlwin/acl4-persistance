@@ -2,6 +2,7 @@ package com.jdc.students.db.entity
 
 import androidx.room.Entity
 import androidx.room.ForeignKey
+import androidx.room.Index
 import androidx.room.PrimaryKey
 import java.util.*
 
@@ -13,6 +14,9 @@ import java.util.*
             childColumns = ["courseId"],
             onDelete = ForeignKey.CASCADE
         )
+    ],
+    indices = [
+        Index(name = "class_room_index_for_course", value = ["courseId"])
     ]
 )
 data class ClassRoom(

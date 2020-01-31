@@ -36,12 +36,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        return navController?.navigateUp(drawerLayout) || super.onSupportNavigateUp()
+        return navController?.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
     private fun handleFloatingActionButton() {
-        navController.addOnDestinationChangedListener { _, destination, _ ->
-            when(destination.id) {
+        navController.addOnDestinationChangedListener { _, d, _ ->
+            when (d.id) {
                 R.id.courses -> {
                     fab.setOnClickListener {
                         navController.navigate(R.id.action_courses_to_edit_course)
@@ -50,7 +50,9 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 R.id.classRooms -> {
-
+                    fab.setOnClickListener {
+                        navController.navigate(R.id.action_global_edit_class)
+                    }
                     fab.show()
                 }
 

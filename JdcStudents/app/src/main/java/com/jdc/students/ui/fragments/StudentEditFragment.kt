@@ -9,16 +9,12 @@ import android.view.ViewGroup
 
 import com.jdc.students.R
 
-/**
- * A simple [Fragment] subclass.
- */
 class StudentEditFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_student_edit, container, false)
     }
 

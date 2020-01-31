@@ -103,11 +103,32 @@
             <action
                 android:id="@+id/action_classRooms_to_edit_class"
                 app:destination="@id/edit_class" />
+            <action
+                android:id="@+id/action_classRooms_to_details_class"
+                app:destination="@id/details_class" />
         </fragment>
         <fragment
             android:id="@+id/edit_class"
             android:name="com.jdc.students.ui.fragments.ClassRoomEditFragment"
             android:label="Add Class"
-            tools:layout="@layout/fragment_class_room_edit" />
+            tools:layout="@layout/fragment_class_room_edit" >
+            <action
+                android:id="@+id/action_edit_class_to_details_class"
+                app:destination="@id/details_class" />
+        </fragment>
+        <fragment
+            android:id="@+id/details_class"
+            android:name="com.jdc.students.ui.fragments.ClassRoomDetailsFragment"
+            android:label="Class Room"
+            tools:layout="@layout/fragment_class_room_details" />
+        <action
+            android:id="@+id/action_global_edit_class"
+            app:destination="@id/edit_class"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/application"
+            app:popUpToInclusive="true" />
     </navigation>
+    <navigation
+        android:id="@+id/navigation"
+        app:startDestination="@id/courses" />
 </navigation>

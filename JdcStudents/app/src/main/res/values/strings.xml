@@ -8,4 +8,13 @@
     <string name="fees_of_course">Fees of Course</string>
     <string name="descriptions">Descriptions</string>
     <string name="save_coursse">Save Coursse</string>
+    <string name="edit">Edit</string>
+    <string name="_2020_10_10">2020/10/10</string>
+    <string name="course_description_text">Course Description Text</string>
+    <string name="sat_sun">SAT - SUN</string>
+    <string name="_200_000_mmk">200,000 MMK</string>
+    <string name="_13_00_15_00">13:00 - 15:00</string>
+    <string name="add_registration">Add Registration</string>
+    <string name="class_icon">Class Icon</string>
+    <string name="fees">Fees</string>
 </resources>

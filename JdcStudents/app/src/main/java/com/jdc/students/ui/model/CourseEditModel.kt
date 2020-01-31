@@ -14,7 +14,7 @@ class CourseEditModel(application: Application):AndroidViewModel(application) {
 
     private val courseService = CourseService.getInstance(application)
 
-    val data:LiveData<Course> = MutableLiveData(Course())
+    val data:MutableLiveData<Course> = MutableLiveData(Course())
 
     fun save(view:View) {
         viewModelScope.launch {

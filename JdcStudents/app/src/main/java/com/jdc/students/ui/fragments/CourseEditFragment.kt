@@ -40,11 +40,9 @@ class CourseEditFragment : Fragment() {
         arguments?.getLong("id")?.also {
 
             runBlocking {
-                withContext(Dispatchers.IO) {
-                    val activity = requireActivity() as AppCompatActivity
-                    activity.supportActionBar?.title = "Edit Course"
-                    model.data.value = service.findById(it)
-                }
+                val activity = requireActivity() as AppCompatActivity
+                activity.supportActionBar?.title = "Edit Course"
+                model.data.value = service.findById(it)
             }
         }
     }

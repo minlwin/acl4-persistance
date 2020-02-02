@@ -22,14 +22,12 @@
                 android:id="@+id/action_courses_to_edit_course"
                 app:destination="@id/edit_course"
                 app:launchSingleTop="true"
-                app:popUpTo="@+id/courses"
                 app:popUpToInclusive="true" />
             <action
                 android:id="@+id/action_courses_to_details_course"
                 app:destination="@id/details_course"
                 app:launchSingleTop="true"
-                app:popUpTo="@+id/courses"
-                app:popUpToInclusive="true" />
+                app:popUpToInclusive="false" />
         </fragment>
         <fragment
             android:id="@+id/edit_course"
@@ -46,8 +44,8 @@
         <fragment
             android:id="@+id/details_course"
             android:name="com.jdc.students.ui.fragments.CourseDetailsFragment"
-            android:label="fragment_course_details"
-            tools:layout="@layout/fragment_course_details" >
+            android:label="Course"
+            tools:layout="@layout/fragment_course_details">
             <action
                 android:id="@+id/action_details_course_to_edit_course"
                 app:destination="@id/edit_course" />
@@ -128,7 +126,4 @@
             app:popUpTo="@+id/application"
             app:popUpToInclusive="true" />
     </navigation>
-    <navigation
-        android:id="@+id/navigation"
-        app:startDestination="@id/courses" />
 </navigation>

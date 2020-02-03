@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
         <variable
-            name="c"
+            name="course"
             type="com.jdc.students.db.entity.Course" />
     </data>
 
@@ -15,11 +16,13 @@
         tools:context=".ui.fragments.CourseDetailsFragment">
 
         <include
+            bind:course="@{course}"
             layout="@layout/summary_course"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/classList"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:listitem="@layout/item_class_for_course" />

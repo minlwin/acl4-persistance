@@ -7,11 +7,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.jdc.students.R
 import com.jdc.students.databinding.FragmentCourseDetailsBinding
 import com.jdc.students.databinding.FragmentCourseEditBinding
 import com.jdc.students.db.services.CourseService
+import com.jdc.students.ui.adapter.ClassForCourseAdapter
+import kotlinx.android.synthetic.main.fragment_course_details.*
 import kotlinx.android.synthetic.main.summary_course.*
 import kotlinx.coroutines.runBlocking
 
@@ -30,12 +33,17 @@ class CourseDetailsFragment : Fragment() {
         val binding = FragmentCourseDetailsBinding.bind(view)
         val id = arguments?.getLong("id")
 
+        classList.layoutManager = LinearLayoutManager(requireContext())
+        val adapter = ClassForCourseAdapter().also {
+            classList.adapter = it
+        }
+
         id?.also {
 
             runBlocking {
-
                 val courseWithClasses = service.findWithClassesById(it)
-                binding.c = courseWithClasses.course
+                binding.course = courseWithClasses.course
+                adapter.submitList(courseWithClasses.list)
             }
 
             editBtn.setOnClickListener {

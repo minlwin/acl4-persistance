@@ -17,4 +17,12 @@
     <string name="add_registration">Add Registration</string>
     <string name="class_icon">Class Icon</string>
     <string name="fees">Fees</string>
+    <string name="select_course">Select Course</string>
+    <string name="enter_start_date">Enter Start Date</string>
+    <string name="enter_days">Enter Days</string>
+    <string name="enter_times">Enter Times</string>
+    <string name="save_class">Save Class</string>
+    <string name="add_new_course">Add New Course</string>
+    <string name="course_edit_cover_image">Course Edit Cover Image</string>
+    <string name="about_course">About Course</string>
 </resources>

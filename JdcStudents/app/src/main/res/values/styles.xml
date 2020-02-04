@@ -23,4 +23,14 @@
     <style name="AppTheme.Card.Dark" parent="Widget.MaterialComponents.CardView">
         <item name="cardBackgroundColor">@color/colorPrimary</item>
     </style>
+
+    <style name="AppTheme.Main.Title" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textSize">32sp</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+    </style>
+
+    <style name="AppTheme.Main.Title.Image" parent="AppTheme">
+        <item name="android:layout_width">200dp</item>
+        <item name="android:layout_height">200dp</item>
+    </style>
 </resources>

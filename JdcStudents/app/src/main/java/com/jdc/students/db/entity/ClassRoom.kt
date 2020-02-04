@@ -22,10 +22,9 @@ import java.util.*
 data class ClassRoom(
     @PrimaryKey(autoGenerate = true)
     val id:Long = 0,
-    val courseId:Long,
-    val startDate:Date?,
-    val startTime:String,
-    val endTime:String,
-    val days:String,
-    val fees:Int
+    val courseId:Long = 0,
+    val startDate:Date? = null,
+    val times:String = "",
+    val days:String = "",
+    val fees:Int = 0
 )

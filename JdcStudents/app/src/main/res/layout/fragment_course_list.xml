@@ -6,8 +6,9 @@
     tools:context=".ui.fragments.CourseListFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:clipToPadding="true"
+        android:padding="16dp"
         tools:listitem="@layout/item_course" />
 </FrameLayout>

@@ -112,18 +112,20 @@
             tools:layout="@layout/fragment_class_room_edit" >
             <action
                 android:id="@+id/action_edit_class_to_details_class"
-                app:destination="@id/details_class" />
+                app:destination="@id/details_class"
+                app:launchSingleTop="true"
+                app:popUpTo="@+id/edit_class"
+                app:popUpToInclusive="true" />
         </fragment>
         <fragment
             android:id="@+id/details_class"
             android:name="com.jdc.students.ui.fragments.ClassRoomDetailsFragment"
             android:label="Class Room"
-            tools:layout="@layout/fragment_class_room_details" />
-        <action
-            android:id="@+id/action_global_edit_class"
-            app:destination="@id/edit_class"
-            app:launchSingleTop="true"
-            app:popUpTo="@+id/application"
-            app:popUpToInclusive="true" />
+            tools:layout="@layout/fragment_class_room_details" >
+            <action
+                android:id="@+id/action_details_class_to_edit_class"
+                app:destination="@id/edit_class"
+                app:launchSingleTop="true" />
+        </fragment>
     </navigation>
 </navigation>

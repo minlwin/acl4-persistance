@@ -9,7 +9,7 @@ import android.view.ViewGroup
 
 import com.jdc.students.R
 
-class StudentEditFragment : Fragment() {
+class StudentEditFragment : BaseFragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -18,5 +18,9 @@ class StudentEditFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_student_edit, container, false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        showSearch(false)
+    }
 
 }

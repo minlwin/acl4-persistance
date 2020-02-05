@@ -12,7 +12,7 @@ import com.jdc.students.R
 /**
  * A simple [Fragment] subclass.
  */
-class RegistrationEditFragment : Fragment() {
+class RegistrationEditFragment : BaseFragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -23,4 +23,8 @@ class RegistrationEditFragment : Fragment() {
     }
 
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        showSearch(false)
+    }
 }

@@ -2,6 +2,8 @@ package com.jdc.students
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -33,7 +35,18 @@ class MainActivity : AppCompatActivity() {
         drawerMenu.setupWithNavController(navController)
 
         handleFloatingActionButton()
+
+
     }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+
+        menuInflater.inflate(R.menu.option_menu, menu)
+
+        return super.onCreateOptionsMenu(menu)
+    }
+
+
 
     override fun onSupportNavigateUp(): Boolean {
         return navController?.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
@@ -51,7 +64,7 @@ class MainActivity : AppCompatActivity() {
 
                 R.id.classRooms -> {
                     fab.setOnClickListener {
-                        navController.navigate(R.id.action_global_edit_class)
+                        navController.navigate(R.id.action_classRooms_to_edit_class)
                     }
                     fab.show()
                 }
@@ -61,7 +74,13 @@ class MainActivity : AppCompatActivity() {
                     fab.show()
                 }
 
-                else -> fab.hide()
+                R.id.students -> {
+                    fab.hide()
+                }
+
+                else -> {
+                    fab.hide()
+                }
             }
         }
     }

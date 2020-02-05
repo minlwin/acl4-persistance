@@ -6,15 +6,43 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.jdc.students.R
+import com.jdc.students.ui.adapter.CourseAdapter
+import com.jdc.students.ui.model.CourseListModel
+import kotlinx.android.synthetic.main.fragment_course_list.*
 
-class CourseListFragment : Fragment() {
+class CourseListFragment : BaseFragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_course_list, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+        super.onViewCreated(view, savedInstanceState)
+        showSearch(true)
+
+        val model by activityViewModels<CourseListModel>()
+        val adapter = CourseAdapter()
+
+        recycler.layoutManager = LinearLayoutManager(requireContext())
+        recycler.adapter = adapter
+
+        model.list.observe(this, Observer {
+            adapter.submitList(it)
+        })
+
+        setSearchListener {
+            model.query.value = it
+            true
+        }
+
     }
 
 }

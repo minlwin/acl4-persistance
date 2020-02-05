@@ -7,6 +7,7 @@
 
 
     <include
+        android:id="@+id/content"
         layout="@layout/content_course_details"
         android:layout_width="0dp"
         android:layout_height="0dp"

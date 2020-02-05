@@ -9,13 +9,20 @@ import android.view.ViewGroup
 
 import com.jdc.students.R
 
-class ClassRoomDetailsFragment : Fragment() {
+class ClassRoomDetailsFragment : BaseFragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_class_room_details, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        showSearch(false)
+
+
     }
 
 }

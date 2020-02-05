@@ -10,13 +10,18 @@ import android.view.ViewGroup
 
 import com.jdc.students.R
 
-class StudentListFragment : Fragment() {
+class StudentListFragment : BaseFragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_student_list, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        showSearch(true)
     }
 
 }

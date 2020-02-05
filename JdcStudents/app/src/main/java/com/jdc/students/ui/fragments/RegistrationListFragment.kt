@@ -12,7 +12,7 @@ import com.jdc.students.R
 /**
  * A simple [Fragment] subclass.
  */
-class RegistrationListFragment : Fragment() {
+class RegistrationListFragment : BaseFragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -22,5 +22,9 @@ class RegistrationListFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_registration_list, container, false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        showSearch(true)
+    }
 
 }

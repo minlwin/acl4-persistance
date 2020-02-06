@@ -1,56 +1,45 @@
 package com.jdc.students.ui.utils
 
 import android.content.Context
-import android.view.LayoutInflater
+import android.text.InputType
 import android.view.View
-import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.Filter
-import android.widget.TextView
+import com.google.android.material.textview.MaterialAutoCompleteTextView
 import com.jdc.students.db.entity.Course
 
-class CourseArrayAdapter(
-    context: Context,
-    private val resource: Int,
-    private val list: MutableList<Course>
-) :
-    ArrayAdapter<Course>(context, resource, list) {
+class CourseArrayAdapter private constructor(context: Context) :
+    ArrayAdapter<String>(context, android.R.layout.simple_spinner_dropdown_item, mutableListOf()),
+    AdapterView.OnItemClickListener{
 
-    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-        val course = getItem(position)
-        val view = convertView as TextView ?: LayoutInflater.from(parent.context).inflate(
-            resource,
-            parent,
-            false
-        ) as TextView
+    private val courses = mutableListOf<Course>()
+    private var selectedIndex:Int? = null
 
-        course?.also {
-            view.text = course.name
+    val selectedItem:Course?
+        get() = selectedIndex?.let {
+            courses[it]
         }
 
-        return view
+    fun submitList(list:List<Course>) {
+        courses.clear()
+        courses.addAll(list)
+
+        clear()
+        addAll(list.map { it.name })
     }
 
-    override fun getFilter(): Filter {
-
-        return object : Filter() {
-            override fun performFiltering(constraint: CharSequence?): FilterResults {
-
-                val result = Filter.FilterResults()
-
-                val query = constraint?.toString()?.toLowerCase()
-
-                result.values = if (query.isNullOrEmpty()) list else list.map { it.name }.filter {
-                    it.toLowerCase().startsWith(query)
-                }
-
-                return result
-            }
-
-            override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
-                notifyDataSetChanged()
-            }
-
+    companion object {
+        fun instance(context:Context, view: () -> MaterialAutoCompleteTextView):CourseArrayAdapter {
+            val adapter = CourseArrayAdapter(context)
+            val input = view()
+            input.setAdapter(adapter)
+            input.onItemClickListener = adapter
+            return adapter
         }
     }
+
+    override fun onItemClick(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+        selectedIndex = position
+    }
+
 }

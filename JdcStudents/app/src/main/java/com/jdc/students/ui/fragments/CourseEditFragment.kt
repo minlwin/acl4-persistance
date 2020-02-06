@@ -25,7 +25,6 @@ class CourseEditFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         super.onViewCreated(view, savedInstanceState)
-        showSearch(false)
 
         val model by viewModels<CourseEditModel>()
         val binding = FragmentCourseEditBinding.bind(view)

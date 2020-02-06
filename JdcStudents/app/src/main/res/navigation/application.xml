@@ -21,12 +21,20 @@
             <action
                 android:id="@+id/action_courses_to_edit_course"
                 app:destination="@id/edit_course"
+                app:enterAnim="@anim/fragment_open_enter"
+                app:exitAnim="@anim/fragment_open_exit"
                 app:launchSingleTop="true"
+                app:popEnterAnim="@anim/fragment_close_enter"
+                app:popExitAnim="@anim/fragment_close_exit"
                 app:popUpToInclusive="true" />
             <action
                 android:id="@+id/action_courses_to_details_course"
                 app:destination="@id/details_course"
+                app:enterAnim="@anim/fragment_open_enter"
+                app:exitAnim="@anim/fragment_open_exit"
                 app:launchSingleTop="true"
+                app:popEnterAnim="@anim/fragment_close_enter"
+                app:popExitAnim="@anim/fragment_close_exit"
                 app:popUpToInclusive="false" />
         </fragment>
         <fragment
@@ -37,7 +45,11 @@
             <action
                 android:id="@+id/action_course_save"
                 app:destination="@id/details_course"
+                app:enterAnim="@anim/fragment_open_enter"
+                app:exitAnim="@anim/fragment_open_exit"
                 app:launchSingleTop="true"
+                app:popEnterAnim="@anim/fragment_close_enter"
+                app:popExitAnim="@anim/fragment_close_exit"
                 app:popUpTo="@+id/edit_course"
                 app:popUpToInclusive="true" />
         </fragment>
@@ -48,7 +60,11 @@
             tools:layout="@layout/fragment_course_details">
             <action
                 android:id="@+id/action_details_course_to_edit_course"
-                app:destination="@id/edit_course" />
+                app:destination="@id/edit_course"
+                app:enterAnim="@anim/fragment_open_enter"
+                app:exitAnim="@anim/fragment_open_exit"
+                app:popEnterAnim="@anim/fragment_close_enter"
+                app:popExitAnim="@anim/fragment_close_exit" />
         </fragment>
     </navigation>
     <navigation

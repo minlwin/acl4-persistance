@@ -21,10 +21,10 @@ import java.util.*
 )
 data class ClassRoom(
     @PrimaryKey(autoGenerate = true)
-    val id:Long = 0,
-    val courseId:Long = 0,
-    val startDate:Date? = null,
-    val times:String = "",
-    val days:String = "",
-    val fees:Int = 0
+    var id:Long = 0,
+    var courseId:Long = 0,
+    var startDate:Date? = null,
+    var times:String = "",
+    var days:String = "",
+    var fees:Int = 0
 )

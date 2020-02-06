@@ -26,7 +26,8 @@ class CourseListFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         super.onViewCreated(view, savedInstanceState)
-        showSearch(true)
+        super.init(Action.Search)
+        super.closeSearch()
 
         val model by activityViewModels<CourseListModel>()
         val adapter = CourseAdapter()
@@ -38,11 +39,11 @@ class CourseListFragment : BaseFragment() {
             adapter.submitList(it)
         })
 
+        model.query.value = null
+
         setSearchListener {
             model.query.value = it
             true
         }
-
     }
-
 }

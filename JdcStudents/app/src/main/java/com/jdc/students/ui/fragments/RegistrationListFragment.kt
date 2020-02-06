@@ -24,7 +24,7 @@ class RegistrationListFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        showSearch(true)
+        super.init(Action.Search)
     }
 
 }

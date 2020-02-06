@@ -1,103 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.fragments.ClassRoomEditFragment">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:id="@+id/textView3"
-        style="@style/AppTheme.Main.Title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="Add New Class"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <data>
+        <variable
+            name="model"
+            type="com.jdc.students.ui.model.ClassEditModel" />
+        <import
+            alias="dateFormat"
+            type="com.jdc.students.ui.converter.DateFormatter" />
+    </data>
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginTop="8dp"
-        android:src="@drawable/ic_class_rooms"
-        app:layout_constraintEnd_toEndOf="@+id/textView3"
-        app:layout_constraintStart_toStartOf="@+id/textView3"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.fragments.ClassRoomEditFragment">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/course"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="32dp"
-        app:layout_constraintBottom_toTopOf="@+id/startDate"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/textView3"
+            style="@style/AppTheme.Main.Title"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="@string/select_course" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_marginTop="32dp"
+            android:text="@{model.title}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/startDate"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/days"
-        app:layout_constraintEnd_toEndOf="@+id/course"
-        app:layout_constraintStart_toStartOf="@+id/course"
-        app:layout_constraintTop_toBottomOf="@+id/course">
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/ic_class_rooms"
+            app:layout_constraintEnd_toEndOf="@+id/textView3"
+            app:layout_constraintStart_toStartOf="@+id/textView3"
+            app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+            android:id="@+id/course"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="@string/enter_start_date" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="32dp"
+            app:layout_constraintBottom_toTopOf="@+id/startDate"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView3">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/days"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/times"
-        app:layout_constraintEnd_toEndOf="@+id/startDate"
-        app:layout_constraintStart_toStartOf="@+id/startDate"
-        app:layout_constraintTop_toBottomOf="@+id/startDate">
+            <com.google.android.material.textview.MaterialAutoCompleteTextView
+                android:text="@{model.courseName}"
+                android:id="@+id/courseSelect"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/select_course" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/startDate"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="@string/enter_days" />
-    </com.google.android.material.textfield.TextInputLayout>
+            app:layout_constraintBottom_toTopOf="@+id/days"
+            app:layout_constraintEnd_toEndOf="@+id/course"
+            app:layout_constraintStart_toStartOf="@+id/course"
+            app:layout_constraintTop_toBottomOf="@+id/course">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/times"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
-        app:layout_constraintEnd_toEndOf="@+id/days"
-        app:layout_constraintStart_toStartOf="@+id/days"
-        app:layout_constraintTop_toBottomOf="@+id/days">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/dateInput"
+                android:text="@={dateFormat.format(model.data.startDate)}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/enter_start_date" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/days"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="@string/enter_times" />
-    </com.google.android.material.textfield.TextInputLayout>
+            app:layout_constraintBottom_toTopOf="@+id/times"
+            app:layout_constraintEnd_toEndOf="@+id/startDate"
+            app:layout_constraintStart_toStartOf="@+id/startDate"
+            app:layout_constraintTop_toBottomOf="@+id/startDate">
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:text="@string/save_class"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/times"
-        app:layout_constraintStart_toStartOf="@+id/times"
-        app:layout_constraintTop_toBottomOf="@+id/times" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:text="@={model.data.days}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/enter_days" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/times"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/button2"
+            app:layout_constraintEnd_toEndOf="@+id/days"
+            app:layout_constraintStart_toStartOf="@+id/days"
+            app:layout_constraintTop_toBottomOf="@+id/days">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:text="@={model.data.times}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/enter_times" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/button2"
+            android:onClick="@{model::save}"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="@string/save_class"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/times"
+            app:layout_constraintStart_toStartOf="@+id/times"
+            app:layout_constraintTop_toBottomOf="@+id/times" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

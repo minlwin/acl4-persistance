@@ -6,8 +6,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 
 import com.jdc.students.R
+import com.jdc.students.databinding.ContentClassDetailsBinding
+import com.jdc.students.ui.model.ClassDetailsModel
+import kotlinx.android.synthetic.main.fragment_class_room_details.*
 
 class ClassRoomDetailsFragment : BaseFragment() {
 
@@ -19,10 +23,17 @@ class ClassRoomDetailsFragment : BaseFragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
         super.onViewCreated(view, savedInstanceState)
-        showSearch(false)
 
+        val model by viewModels<ClassDetailsModel>()
+        val binding = ContentClassDetailsBinding.bind(content)
+        binding.lifecycleOwner = this
+        binding.model = model
 
+        arguments?.getLong("id")?.also {
+            model.id.value = it
+        }
     }
 
 }

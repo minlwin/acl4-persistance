@@ -6,6 +6,7 @@ import androidx.room.Insert
 import androidx.room.Query
 import com.jdc.students.db.dto.ClassWithCourse
 import com.jdc.students.db.entity.ClassRoom
+import java.util.*
 
 @Dao
 interface ClassRoomDao {
@@ -32,4 +33,8 @@ interface ClassRoomDao {
             or lower(cl.times) like :keyword or lower(c.description) like :keyword
     """)
     fun search(keyword: String):LiveData<List<ClassWithCourse>>
+
+    @Query("select * from ClassRoom where startDate >= :from")
+    fun search(from: Date):LiveData<List<ClassWithCourse>>
+
 }

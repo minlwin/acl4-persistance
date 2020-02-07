@@ -71,7 +71,9 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 R.id.registrations -> {
-
+                    fab.setOnClickListener {
+                        navController.navigate(R.id.action_registration_add)
+                    }
                     fab.show()
                 }
 

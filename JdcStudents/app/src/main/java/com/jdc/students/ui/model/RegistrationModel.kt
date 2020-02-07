@@ -15,6 +15,7 @@ import com.jdc.students.db.view.Registrations
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.util.*
 
 class RegistrationModel(application: Application) : AndroidViewModel(application) {
 
@@ -50,6 +51,7 @@ class RegistrationModel(application: Application) : AndroidViewModel(application
                     validate(registrations)
 
                     val registrationId = withContext(Dispatchers.IO) {
+                        registrations.registDate = Date()
                         service.save(registrations)
                     }
 

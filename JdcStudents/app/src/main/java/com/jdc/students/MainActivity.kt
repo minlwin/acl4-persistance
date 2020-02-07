@@ -1,5 +1,6 @@
 package com.jdc.students
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -36,7 +37,7 @@ class MainActivity : AppCompatActivity() {
 
         handleFloatingActionButton()
 
-
+        MainActivity.context = this
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -83,6 +84,10 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    companion object {
+        lateinit var context:Context
     }
 
 }

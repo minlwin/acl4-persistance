@@ -6,12 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import com.jdc.students.R
 import com.jdc.students.databinding.FragmentCourseEditBinding
 import com.jdc.students.ui.model.CourseEditModel
-import kotlinx.android.synthetic.main.layout_toolbar.*
 
 class CourseEditFragment : BaseFragment() {
 
@@ -31,9 +30,11 @@ class CourseEditFragment : BaseFragment() {
         binding.lifecycleOwner = this
         binding.model = model
 
+        model.title.observe(this, Observer {
+            toolbar.title = it
+        })
+
         arguments?.getLong("id")?.also {
-            val activity = requireActivity() as AppCompatActivity
-            activity.supportActionBar?.title = "Edit Course"
             model.id.value = it
         }
 

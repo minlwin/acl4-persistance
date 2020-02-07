@@ -5,17 +5,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.jdc.students.R
 import com.jdc.students.ui.adapter.ClassAdapter
-import com.jdc.students.ui.adapter.CourseAdapter
 import com.jdc.students.ui.model.ClassListModel
-import com.jdc.students.ui.model.CourseListModel
 import kotlinx.android.synthetic.main.fragment_course_list.*
-import java.util.*
 
 class ClassRoomListFragment : BaseFragment() {
 

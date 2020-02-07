@@ -8,12 +8,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-
 import com.jdc.students.R
 import com.jdc.students.databinding.FragmentClassRoomEditBinding
 import com.jdc.students.ui.converter.datepicker
 import com.jdc.students.ui.model.ClassEditModel
-import com.jdc.students.ui.model.CourseEditModel
 import com.jdc.students.ui.model.CourseListModel
 import com.jdc.students.ui.utils.CourseArrayAdapter
 import kotlinx.android.synthetic.main.fragment_class_room_edit.*
@@ -30,20 +28,14 @@ class ClassRoomEditFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         super.onViewCreated(view, savedInstanceState)
+        datepicker(requireContext()) { dateInput }
 
         val classEditModel by viewModels<ClassEditModel>()
         val coursesModel by activityViewModels<CourseListModel>()
 
-        val adapter = CourseArrayAdapter.instance(requireContext()) { courseSelect }
-
         val binding = FragmentClassRoomEditBinding.bind(view)
         binding.lifecycleOwner = this
         binding.model = classEditModel
-
-        coursesModel.list.observe(this, Observer { adapter.submitList(it) })
-        classEditModel.course = { adapter.selectedItem }
-
-        datepicker(requireContext()) { dateInput }
 
         classEditModel.title.observe(this, Observer {
             toolbar.title = it
@@ -53,5 +45,8 @@ class ClassRoomEditFragment : BaseFragment() {
             classEditModel.id.value = it
         }
 
+        CourseArrayAdapter.instance(requireContext(), classEditModel::setCourse, courseSelect).also { adapter ->
+            coursesModel.list.observe(this, Observer { adapter.submitList(it) })
+        }
     }
 }

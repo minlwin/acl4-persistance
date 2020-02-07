@@ -76,17 +76,33 @@
             android:label="Students"
             tools:layout="@layout/fragment_student_list">
             <action
-                android:id="@+id/action_students_to_edit_student"
+                android:id="@+id/action_list_to_edit_student"
                 app:destination="@id/edit_student"
                 app:launchSingleTop="true"
                 app:popUpTo="@+id/students"
                 app:popUpToInclusive="true" />
+            <action
+                android:id="@+id/action_list_to_details"
+                app:destination="@id/studentDetailsFragment2" />
         </fragment>
         <fragment
             android:id="@+id/edit_student"
             android:name="com.jdc.students.ui.fragments.StudentEditFragment"
             android:label="Edit Student"
-            tools:layout="@layout/fragment_student_edit" />
+            tools:layout="@layout/fragment_student_edit" >
+            <action
+                android:id="@+id/action_save_student"
+                app:destination="@id/studentDetailsFragment2" />
+        </fragment>
+        <fragment
+            android:id="@+id/studentDetailsFragment2"
+            android:name="com.jdc.students.ui.fragments.StudentDetailsFragment"
+            android:label="fragment_student_details"
+            tools:layout="@layout/fragment_student_details" >
+            <action
+                android:id="@+id/action_details_to_edit_student"
+                app:destination="@id/edit_student" />
+        </fragment>
     </navigation>
     <navigation
         android:id="@+id/registrations"
@@ -97,14 +113,36 @@
             android:label="Registrations"
             tools:layout="@layout/fragment_registration_list">
             <action
-                android:id="@+id/action_registrations_to_edit_registration"
-                app:destination="@id/edit_registration" />
+                android:id="@+id/action_registration_add"
+                app:destination="@id/rEdit"
+                app:launchSingleTop="true" />
+            <action
+                android:id="@+id/action_registrations_to_details"
+                app:destination="@id/rDetails"
+                app:launchSingleTop="true" />
         </fragment>
         <fragment
-            android:id="@+id/edit_registration"
+            android:id="@+id/rEdit"
             android:name="com.jdc.students.ui.fragments.RegistrationEditFragment"
             android:label="Add Registration"
-            tools:layout="@layout/fragment_registration_edit" />
+            tools:layout="@layout/fragment_registration_edit" >
+            <action
+                android:id="@+id/action_registration_save"
+                app:destination="@id/rDetails"
+                app:launchSingleTop="true"
+                app:popUpTo="@+id/rEdit"
+                app:popUpToInclusive="true" />
+        </fragment>
+        <fragment
+            android:id="@+id/rDetails"
+            android:name="com.jdc.students.ui.fragments.RegistrationDetailsFragment"
+            android:label="fragment_regiistration_details"
+            tools:layout="@layout/fragment_regiistration_details" >
+            <action
+                android:id="@+id/action_registration_edit"
+                app:destination="@id/rEdit"
+                app:launchSingleTop="true" />
+        </fragment>
     </navigation>
     <navigation
         android:id="@+id/classRooms"

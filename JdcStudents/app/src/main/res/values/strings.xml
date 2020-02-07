@@ -25,4 +25,7 @@
     <string name="add_new_course">Add New Course</string>
     <string name="course_edit_cover_image">Course Edit Cover Image</string>
     <string name="about_course">About Course</string>
+    <string name="about_registration">About Registration</string>
+    <string name="about_student">About Student</string>
+    <string name="about_class">About Class</string>
 </resources>

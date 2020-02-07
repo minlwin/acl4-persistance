@@ -40,6 +40,10 @@ class RegistrationEditFragment : BaseFragment() {
         binding.lifecycleOwner = this
         binding.model = registrationModel
 
+        registrationModel.title.observe(this, Observer {
+            toolbar.title = it
+        })
+
         arguments?.getLong("id")?.also {
             registrationModel.id.value = it
         }

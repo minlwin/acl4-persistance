@@ -136,8 +136,8 @@
         <fragment
             android:id="@+id/rDetails"
             android:name="com.jdc.students.ui.fragments.RegistrationDetailsFragment"
-            android:label="fragment_regiistration_details"
-            tools:layout="@layout/fragment_regiistration_details" >
+            android:label="Registration"
+            tools:layout="@layout/fragment_regiistration_details">
             <action
                 android:id="@+id/action_registration_edit"
                 app:destination="@id/rEdit"

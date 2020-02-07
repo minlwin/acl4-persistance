@@ -3,10 +3,7 @@ package com.jdc.students.ui.model
 import android.app.Application
 import android.os.Bundle
 import android.view.View
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.switchMap
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import androidx.navigation.findNavController
 import com.jdc.students.R
 import com.jdc.students.db.dto.ClassWithCourse
@@ -24,6 +21,8 @@ class RegistrationModel(application: Application) : AndroidViewModel(application
     val id = MutableLiveData(0L)
 
     val data = id.switchMap { if(it == 0L) MutableLiveData(Registrations()) else service.findById(it) }
+
+    val title = id.map { if(it == 0L) "Add Registration" else "Edit Registration" }
 
     fun setClass(dto:ClassWithCourse) {
         data.value?.also {

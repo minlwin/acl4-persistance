@@ -1,4 +1,4 @@
-package com.jdc.students.ui.adapter
+package com.jdc.students.ui.adapter.recycler
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -24,11 +24,12 @@ class RegistrationAdapter : ListAdapter<Registrations, RegistrationAdapter.VH>(
 
     class VH(val binding: ItemRegistrationBinding) : RecyclerView.ViewHolder(binding.root)
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = VH(
-        ItemRegistrationBinding.inflate(
-            LayoutInflater.from(parent.context), parent, false
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
+        VH(
+            ItemRegistrationBinding.inflate(
+                LayoutInflater.from(parent.context), parent, false
+            )
         )
-    )
 
     override fun onBindViewHolder(holder: VH, position: Int) {
         getItem(position).also { data ->

@@ -13,7 +13,7 @@ import com.jdc.students.databinding.FragmentClassRoomEditBinding
 import com.jdc.students.ui.converter.datepicker
 import com.jdc.students.ui.model.ClassEditModel
 import com.jdc.students.ui.model.CourseListModel
-import com.jdc.students.ui.utils.CourseArrayAdapter
+import com.jdc.students.ui.adapter.array.CourseArrayAdapter
 import kotlinx.android.synthetic.main.fragment_class_room_edit.*
 
 class ClassRoomEditFragment : BaseFragment() {

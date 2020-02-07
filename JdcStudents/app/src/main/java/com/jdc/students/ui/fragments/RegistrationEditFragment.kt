@@ -13,7 +13,7 @@ import com.jdc.students.R
 import com.jdc.students.databinding.FragmentRegistrationEditBinding
 import com.jdc.students.ui.model.ClassListModel
 import com.jdc.students.ui.model.RegistrationModel
-import com.jdc.students.ui.utils.ClassArrayAdapter
+import com.jdc.students.ui.adapter.array.ClassArrayAdapter
 import kotlinx.android.synthetic.main.fragment_registration_edit.*
 import java.util.*
 

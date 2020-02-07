@@ -1,4 +1,4 @@
-package com.jdc.students.ui.utils
+package com.jdc.students.ui.adapter.array
 
 import android.content.Context
 import android.view.View
@@ -35,7 +35,10 @@ class ClassArrayAdapter private constructor(
             context: Context,
             consumer: (ClassWithCourse) -> Unit,
             view: AutoCompleteTextView
-        ) = ClassArrayAdapter(context, consumer).also {
+        ) = ClassArrayAdapter(
+            context,
+            consumer
+        ).also {
             view.setAdapter(it)
             view.onItemClickListener = it
         }

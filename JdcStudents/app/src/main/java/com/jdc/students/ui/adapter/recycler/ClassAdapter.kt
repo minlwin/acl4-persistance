@@ -1,4 +1,4 @@
-package com.jdc.students.ui.adapter
+package com.jdc.students.ui.adapter.recycler
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -27,9 +27,10 @@ class ClassAdapter : ListAdapter<ClassWithCourse, ClassAdapter.VH>(
 
     class VH(val binding: ItemClassBinding) : RecyclerView.ViewHolder(binding.root)
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = VH(
-        ItemClassBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-    )
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
+        VH(
+            ItemClassBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        )
 
     override fun onBindViewHolder(holder: VH, position: Int) {
 

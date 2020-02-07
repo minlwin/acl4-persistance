@@ -2,7 +2,6 @@ package com.jdc.students.ui.fragments
 
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,7 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.jdc.students.R
-import com.jdc.students.ui.adapter.RegistrationAdapter
+import com.jdc.students.ui.adapter.recycler.RegistrationAdapter
 import com.jdc.students.ui.model.RegistrationListModel
 import kotlinx.android.synthetic.main.fragment_student_list.*
 

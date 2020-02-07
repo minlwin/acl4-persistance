@@ -9,7 +9,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.jdc.students.R
-import com.jdc.students.ui.adapter.ClassAdapter
+import com.jdc.students.ui.adapter.recycler.ClassAdapter
 import com.jdc.students.ui.model.ClassListModel
 import kotlinx.android.synthetic.main.fragment_course_list.*
 

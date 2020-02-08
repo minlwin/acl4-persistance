@@ -4,6 +4,19 @@
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/action_home_sales"
+            android:icon="@drawable/ic_cart"
+            android:title="Sales Report" />
+        <item
+            android:id="@+id/action_home_categories"
+            android:icon="@drawable/ic_category"
+            android:title="Categories" />
+        <item
+            android:id="@+id/action_home_products"
+            android:icon="@drawable/ic_foods"
+            android:title="Menus" />
     </group>
 
     <item android:title="Communicate">

@@ -7,82 +7,74 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.jdc.restaurant.ui.fragments.HomeFragment"
-        android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
+        android:label="Restaurant"
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_home_categories"
-            app:destination="@id/categories" />
+            app:destination="@id/categories"/>
         <action
             android:id="@+id/action_home_products"
             app:destination="@id/products" />
         <action
-            android:id="@+id/action_homeFragment_to_salesFragment"
+            android:id="@+id/action_home_sales"
             app:destination="@id/sales" />
     </fragment>
     <fragment
         android:id="@+id/categories"
+        tools:layout="@layout/fragment_categories"
         android:name="com.jdc.restaurant.ui.fragments.CategoriesFragment"
         android:label="Categories">
         <action
-            android:id="@+id/action_categoriesFragment_to_categoryEditFragment"
+            android:id="@+id/action_edit_category"
             app:destination="@id/edit_category" />
     </fragment>
     <fragment
         android:id="@+id/edit_category"
         android:name="com.jdc.restaurant.ui.fragments.CategoryEditFragment"
-        android:label="Edit Category">
+        android:label="Edit Category"
+        tools:layout="@layout/fragment_category_edit">
         <action
-            android:id="@+id/action_categoryEditFragment_to_categoriesFragment"
+            android:id="@+id/action_save_category"
             app:destination="@id/categories" />
     </fragment>
     <fragment
         android:id="@+id/product"
+        tools:layout="@layout/fragment_product"
         android:name="com.jdc.restaurant.ui.fragments.ProductFragment"
         android:label="Product">
         <action
-            android:id="@+id/action_productFragment_to_productEditFragment"
+            android:id="@+id/action_edit_product"
             app:destination="@id/edit_product" />
     </fragment>
     <fragment
-        android:id="@+id/edit_sale"
-        android:name="com.jdc.restaurant.ui.fragments.SaleEditFragment"
-        android:label="Edit Sale">
-        <action
-            android:id="@+id/action_saleEditFragment_to_saleFragment"
-            app:destination="@id/sale" />
-    </fragment>
-    <fragment
         android:id="@+id/sale"
+        tools:layout="@layout/fragment_sale"
         android:name="com.jdc.restaurant.ui.fragments.SaleFragment"
-        android:label="Sale">
-        <action
-            android:id="@+id/action_saleFragment_to_saleEditFragment"
-            app:destination="@id/edit_sale" />
-    </fragment>
+        android:label="Sale" />
     <fragment
         android:id="@+id/edit_product"
         android:name="com.jdc.restaurant.ui.fragments.ProductEditFragment"
         android:label="Edit Product"
         tools:layout="@layout/fragment_product_edit">
         <action
-            android:id="@+id/action_productEditFragment_to_productFragment"
+            android:id="@+id/action_save_product"
             app:destination="@id/product" />
     </fragment>
     <fragment
         android:id="@+id/products"
         android:name="com.jdc.restaurant.ui.fragments.ProductsFragment"
-        android:label="Products"
+        android:label="Menus"
         tools:layout="@layout/fragment_products">
         <action
-            android:id="@+id/action_productsFragment_to_productEditFragment"
+            android:id="@+id/action_add_product"
             app:destination="@id/edit_product" />
     </fragment>
     <fragment
         android:id="@+id/sales"
+        tools:layout="@layout/fragment_sales"
         android:name="com.jdc.restaurant.ui.fragments.SalesFragment"
-        android:label="Sales">
-        <action
-            android:id="@+id/action_salesFragment_to_saleEditFragment"
-            app:destination="@id/edit_sale" />
-    </fragment>
+        android:label="Sales"/>
+    <action
+        android:id="@+id/action_global_sale"
+        app:destination="@id/sale" />
 </navigation>

@@ -17,6 +17,8 @@ import kotlinx.android.synthetic.main.fragment_edit.*
 
 class EditFragment : Fragment() {
 
+    private lateinit var navController:NavController
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -25,6 +27,9 @@ class EditFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+        navController = view.findNavController()
+
         button.setOnClickListener {
 
             val task = CreateTask { view.findNavController() }
@@ -40,7 +45,7 @@ class EditFragment : Fragment() {
         }
     }
 
-    private inner class CreateTask(private val nav:() -> NavController):AsyncTask<Student, Void, Void?>() {
+    private inner class CreateTask():AsyncTask<Student, Void, Void?>() {
 
         private val dao = StudentDB.getDatabase(requireContext()).studentDao()
 
@@ -56,7 +61,7 @@ class EditFragment : Fragment() {
         }
 
         override fun onPostExecute(result: Void?) {
-            nav().navigate(R.id.action_edit_to_list)
+            navController.navigate(R.id.action_edit_to_list)
         }
     }
 }

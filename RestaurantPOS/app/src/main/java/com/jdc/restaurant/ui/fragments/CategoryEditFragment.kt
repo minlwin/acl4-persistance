@@ -26,5 +26,9 @@ class CategoryEditFragment:BaseFragment() {
         val binding = FragmentCategoryEditBinding.bind(view)
         binding.lifecycleOwner = this
         binding.model = model
+
+        arguments?.getLong("id")?.also {
+            model.id.value = it
+        }
     }
 }

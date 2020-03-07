@@ -7,7 +7,7 @@ import com.jdc.restaurant.db.entity.Product
 
 data class ProductWithCategory(
     @Embedded
-    val product: Product,
+    val product: Product = Product(),
     @Relation(parentColumn = "categoryId", entityColumn = "id")
-    val category: Category
+    var category: Category? = Category()
 )

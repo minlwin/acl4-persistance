@@ -17,6 +17,7 @@ data class Product(
     )
     @ColumnInfo(index = true)
     var categoryId:Long = 0,
+    var name:String = "",
     var price:Int = 0,
     var description:String = ""
 )

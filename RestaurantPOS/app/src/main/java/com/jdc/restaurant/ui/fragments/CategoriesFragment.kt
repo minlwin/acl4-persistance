@@ -36,7 +36,7 @@ class CategoriesFragment : BaseFragment() {
 
         recycler.adapter = adapter
 
-        model.list.observe(this, Observer {
+        model.list.observe(viewLifecycleOwner, Observer {
             adapter.submitList(it)
         })
 

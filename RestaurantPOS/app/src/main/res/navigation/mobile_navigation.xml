@@ -26,7 +26,8 @@
         android:label="Categories">
         <action
             android:id="@+id/action_edit_category"
-            app:destination="@id/edit_category" />
+            app:destination="@id/edit_category"
+            app:launchSingleTop="true" />
     </fragment>
     <fragment
         android:id="@+id/edit_category"
@@ -35,7 +36,10 @@
         tools:layout="@layout/fragment_category_edit">
         <action
             android:id="@+id/action_save_category"
-            app:destination="@id/categories" />
+            app:destination="@id/categories"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/categories"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/product"
@@ -58,7 +62,10 @@
         tools:layout="@layout/fragment_product_edit">
         <action
             android:id="@+id/action_save_product"
-            app:destination="@id/product" />
+            app:destination="@id/product"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/products"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/products"
@@ -67,7 +74,12 @@
         tools:layout="@layout/fragment_products">
         <action
             android:id="@+id/action_add_product"
-            app:destination="@id/edit_product" />
+            app:destination="@id/edit_product"
+            app:launchSingleTop="true" />
+        <action
+            android:id="@+id/action_products_to_product"
+            app:destination="@id/product"
+            app:launchSingleTop="true" />
     </fragment>
     <fragment
         android:id="@+id/sales"

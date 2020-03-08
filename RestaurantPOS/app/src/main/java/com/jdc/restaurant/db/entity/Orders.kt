@@ -31,4 +31,7 @@ data class Orders(
     @ColumnInfo(index = true)
     var saleId:Long = 0,
     var quantity:Int = 0
-)
+) {
+    val total:Int
+        get() = unitPrice * quantity
+}

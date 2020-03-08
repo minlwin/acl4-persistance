@@ -54,7 +54,11 @@
         android:id="@+id/sale"
         tools:layout="@layout/fragment_sale"
         android:name="com.jdc.restaurant.ui.fragments.SaleFragment"
-        android:label="Sale" />
+        android:label="Sale" >
+        <action
+            android:id="@+id/action_sale_to_sales"
+            app:destination="@id/sales" />
+    </fragment>
     <fragment
         android:id="@+id/edit_product"
         android:name="com.jdc.restaurant.ui.fragments.ProductEditFragment"
@@ -89,4 +93,10 @@
     <action
         android:id="@+id/action_global_sale"
         app:destination="@id/sale" />
+    <action
+        android:id="@+id/action_global_home"
+        app:destination="@id/homeFragment"
+        app:popUpTo="@id/homeFragment"
+        app:popUpToInclusive="true"
+        app:launchSingleTop="true" />
 </navigation>

@@ -5,23 +5,37 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.jdc.restaurant.databinding.ItemSaleBinding
+import com.jdc.restaurant.databinding.ItemOrderBinding
 import com.jdc.restaurant.db.entity.Orders
 
-class OrderAdapter:ListAdapter<Orders, OrderAdapter.VH>(
+class OrderAdapter(
+    private val adder:(Long?) -> Unit,
+    private val remover:(Long?) -> Unit
+):ListAdapter<Orders, OrderAdapter.VH>(
     object : DiffUtil.ItemCallback<Orders>() {
         override fun areItemsTheSame(oldItem: Orders, newItem: Orders) = oldItem.id == newItem.id
         override fun areContentsTheSame(oldItem: Orders, newItem: Orders) = oldItem == newItem
     }
 ) {
 
-    class VH(val binding:ItemSaleBinding): RecyclerView.ViewHolder(binding.root)
+    class VH(val binding:ItemOrderBinding): RecyclerView.ViewHolder(binding.root)
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = VH(ItemSaleBinding.inflate(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = VH(ItemOrderBinding.inflate(
         LayoutInflater.from(parent.context), parent, false
     ))
 
     override fun onBindViewHolder(holder: VH, position: Int) {
-        holder.binding.order = getItem(position)
+        val order = getItem(position)
+        holder.binding.order = order
+
+        holder.binding.plusBtn.setOnClickListener {
+            adder(order.productId)
+            notifyItemChanged(position)
+        }
+
+        holder.binding.minusBtn.setOnClickListener {
+            remover(order.productId)
+            notifyItemChanged(position)
+        }
     }
 }

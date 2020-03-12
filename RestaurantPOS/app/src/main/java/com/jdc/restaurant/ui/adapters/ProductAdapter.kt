@@ -46,7 +46,7 @@ class ProductAdapter(private val addToCart:(Product) -> Unit):ListAdapter<Produc
             it.findNavController().navigate(R.id.action_products_to_product, bundleOf("id" to dto.product.id))
         }
 
-        holder.itemView.addBtn.setOnClickListener {
+        holder.itemView.minusBtn.setOnClickListener {
             addToCart(dto.product)
         }
     }

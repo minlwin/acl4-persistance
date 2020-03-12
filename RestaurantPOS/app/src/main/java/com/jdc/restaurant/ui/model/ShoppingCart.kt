@@ -16,6 +16,7 @@ import com.jdc.restaurant.service.SaleService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.util.*
 
 class ShoppingCart(application: Application) : AndroidViewModel(application) {
 
@@ -27,6 +28,8 @@ class ShoppingCart(application: Application) : AndroidViewModel(application) {
     val count:MutableLiveData<Int> = MutableLiveData(0)
     val total:MutableLiveData<Int> = MutableLiveData(0)
 
+    val saleDate = MutableLiveData(Date())
+
     fun addToCart(product:Product) {
         val currentOrder = orders.firstOrNull { it.productId == product.id } ?: Orders(
             productId = product.id,
@@ -37,7 +40,34 @@ class ShoppingCart(application: Application) : AndroidViewModel(application) {
         }
 
         currentOrder.quantity = currentOrder.quantity + 1
+        update()
+    }
 
+    fun addToCart(productId: Long?) {
+        orders.find { it.productId == productId }?.also {
+            it.quantity = it.quantity + 1
+
+            if(it.quantity == 0) {
+                orders.remove(it)
+            }
+
+            update()
+        }
+    }
+
+    fun removeFromCart(productId: Long?) {
+        orders.find { it.productId == productId }?.also {
+            it.quantity = it.quantity - 1
+
+            if(it.quantity == 0) {
+                orders.remove(it)
+            }
+
+            update()
+        }
+    }
+
+    private fun update() {
         count.value = orders.map { it.quantity }.sum()
         total.value = orders.map { it.quantity * it.unitPrice }.sum()
     }
@@ -60,7 +90,7 @@ class ShoppingCart(application: Application) : AndroidViewModel(application) {
                 saleService.create(orders)
             }
             initCart()
-            v.findNavController().navigate(R.id.action_sale_to_sales)
+            v.findNavController().navigate(R.id.sales)
         }
 
     }

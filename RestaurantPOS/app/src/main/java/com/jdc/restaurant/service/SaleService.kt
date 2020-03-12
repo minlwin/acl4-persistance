@@ -24,4 +24,6 @@ class SaleService(context: Context) {
             ordersDao.insert(it)
         }
     }
+
+    fun findAll() = saleDao.findAll()
 }

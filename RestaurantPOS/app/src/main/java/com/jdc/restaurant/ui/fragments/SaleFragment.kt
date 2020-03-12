@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.jdc.restaurant.R
 import com.jdc.restaurant.databinding.FragmentSaleBinding
@@ -30,10 +32,16 @@ class SaleFragment : BaseFragment() {
         binding.lifecycleOwner = this
         binding.cart = cart
 
-        val adapter = OrderAdapter()
+        val adapter = OrderAdapter(cart::addToCart, cart::removeFromCart)
         adapter.submitList(cart.orders)
 
         recycler.layoutManager = LinearLayoutManager(requireContext())
         recycler.adapter = adapter
+
+        cart.count.observe(viewLifecycleOwner, Observer {
+            if(it == 0) {
+                view.findNavController().navigate(R.id.action_global_home)
+            }
+        })
     }
 }

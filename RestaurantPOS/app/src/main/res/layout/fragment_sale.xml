@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <import type="com.jdc.restaurant.ui.converter.DateConverter" alias="date" />
         <variable
             name="cart"
             type="com.jdc.restaurant.ui.model.ShoppingCart" />
@@ -21,12 +22,10 @@
 
             <ImageView
                 android:id="@+id/imageView6"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginBottom="8dp"
-                app:layout_constraintBottom_toTopOf="@+id/count"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_cart" />
@@ -35,9 +34,8 @@
                 android:id="@+id/textView9"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Total"
-                android:textSize="24sp"
+                android:text="Sale Details"
+                android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="@+id/guideline"
                 app:layout_constraintTop_toTopOf="@+id/imageView6" />
 
@@ -46,53 +44,61 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                app:layout_constraintGuide_begin="158dp" />
+                app:layout_constraintGuide_begin="114dp" />
 
             <TextView
                 android:id="@+id/count"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:layout_marginBottom="16dp"
-                android:text="@{`Count : ` + cart.count}"
-                android:textSize="24sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/imageView6"
-                app:layout_constraintStart_toStartOf="@+id/imageView6"
-                app:layout_constraintTop_toBottomOf="@+id/imageView6" />
+                android:text="@{`Qty : ` + cart.count}"
+                app:layout_constraintStart_toStartOf="@+id/guideline"
+                app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
             <TextView
                 android:id="@+id/total"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@{String.valueOf(cart.total)}"
-                android:textSize="48sp"
-                app:layout_constraintStart_toStartOf="@+id/guideline"
-                app:layout_constraintTop_toBottomOf="@+id/textView9" />
+                android:layout_marginEnd="16dp"
+                android:text="@{cart.total + ` MMK`}"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/count"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/count" />
 
             <TextView
                 android:id="@+id/clearBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
+                android:layout_marginEnd="16dp"
                 android:onClick="@{cart::clear}"
                 android:text="CLEAR"
-                android:textSize="24sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/guideline" />
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@+id/paidBtn"
+                app:layout_constraintEnd_toStartOf="@+id/paidBtn" />
 
             <TextView
                 android:id="@+id/paidBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
                 android:layout_marginBottom="16dp"
                 android:onClick="@{cart::paid}"
                 android:text="PAID"
-                android:textSize="24sp"
+                android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/clearBtn" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/total" />
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{date.format(cart.saleDate)}"
+                app:layout_constraintBottom_toBottomOf="@+id/clearBtn"
+                app:layout_constraintStart_toStartOf="@+id/guideline"
+                app:layout_constraintTop_toTopOf="@+id/clearBtn" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

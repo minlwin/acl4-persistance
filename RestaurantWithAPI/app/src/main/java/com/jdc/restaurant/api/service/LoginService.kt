@@ -32,6 +32,8 @@ class LoginService {
                 response.body()?.also {
                     ClientContext.loginUser = it.user
                     ClientContext.token = it.token
+
+                    result.value = true
                 }
             }
 

@@ -6,5 +6,6 @@ data class Employee(
     val role:String = "",
     val email:String = "",
     val phone:String = "",
-    val creation:String = ""
+    val creation:String = "",
+    val modification:String = ""
 )

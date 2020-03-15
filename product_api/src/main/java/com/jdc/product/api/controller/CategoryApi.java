@@ -30,8 +30,8 @@ public class CategoryApi extends BaseController<Category, Integer>{
 		return Arrays.asList("Grand Menu", "Set Menu","Drinks");
 	}
 	
-	@GetMapping("types/{t}")
-	public List<Category> findByType(@PathVariable("t") String type) {
+	@GetMapping("types/{type}")
+	public List<Category> findByType(@PathVariable String type) {
 		return myService.findByType(type);
 	}
 	

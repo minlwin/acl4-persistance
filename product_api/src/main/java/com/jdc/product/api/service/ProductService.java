@@ -10,12 +10,9 @@ import com.jdc.product.api.repo.ProductRepo;
 @Service
 public class ProductService extends BaseService<Product, Integer> {
 
-	private ProductRepo myRepo;
-
 	@Autowired
 	public ProductService(ProductRepo myRepo) {
 		super(myRepo);
-		this.myRepo = myRepo;
 	}
 	
 	

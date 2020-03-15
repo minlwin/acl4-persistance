@@ -12,12 +12,9 @@ import com.jdc.product.api.service.ProductService;
 @RequestMapping("products")
 public class ProductApi extends BaseController<Product, Integer>{
 
-	private ProductService myService;
-
 	@Autowired
 	public ProductApi(ProductService myService) {
 		super(myService);
-		this.myService = myService;
 	}
 	
 	

@@ -1,7 +1,5 @@
 package com.jdc.product.api.repo;
 
-import java.util.List;
-
 import com.jdc.product.api.base.BaseRepository;
 import com.jdc.product.api.entity.Category;
 

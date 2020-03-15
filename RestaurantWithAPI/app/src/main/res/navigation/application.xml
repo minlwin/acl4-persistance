@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/application"
-    app:startDestination="@id/login">
+    app:startDestination="@id/tables">
 
     <fragment
         android:id="@+id/login"
@@ -14,5 +14,50 @@
         android:id="@+id/tables"
         android:name="com.jdc.restaurant.ui.fragment.TablesFragment"
         android:label="Tables"
-        tools:layout="@layout/fragment_tables" />
+        tools:layout="@layout/fragment_tables" >
+        <action
+            android:id="@+id/action_tables_to_login"
+            app:destination="@id/login"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:launchSingleTop="true"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+        <action
+            android:id="@+id/action_tables_to_table"
+            app:destination="@id/table"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:launchSingleTop="true"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+    </fragment>
+    <action
+        android:id="@+id/action_global_tables"
+        app:destination="@id/tables"
+        app:enterAnim="@anim/fragment_open_enter"
+        app:exitAnim="@anim/fragment_open_exit"
+        app:launchSingleTop="true"
+        app:popEnterAnim="@anim/fragment_open_enter"
+        app:popExitAnim="@anim/fragment_open_exit"
+        app:popUpToInclusive="false" />
+    <fragment
+        android:id="@+id/table"
+        android:name="com.jdc.restaurant.ui.fragment.TableFragment"
+        android:label="Table Details"
+        tools:layout="@layout/fragment_table" >
+        <action
+            android:id="@+id/action_table_to_voucher"
+            app:destination="@id/voucher"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:launchSingleTop="true"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/voucher"
+        android:name="com.jdc.restaurant.ui.fragment.VoucherFragment"
+        android:label="Voucher"
+        tools:layout="@layout/fragment_voucher" />
 </navigation>

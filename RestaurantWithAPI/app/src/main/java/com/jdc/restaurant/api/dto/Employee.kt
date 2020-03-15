@@ -1,11 +1,11 @@
 package com.jdc.restaurant.api.dto
 
 data class Employee(
-    val id:Int = 0,
-    val name:String = "",
-    val role:String = "",
-    val email:String = "",
-    val phone:String = "",
-    val creation:String = "",
-    val modification:String = ""
+    var id:Int = 0,
+    var name:String = "",
+    var role:String = "",
+    var email:String = "",
+    var phone:String = "",
+    var creation:String = "",
+    var modification:String = ""
 )

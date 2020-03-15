@@ -15,30 +15,18 @@ class LoginService {
 
     private val client = ClientFactory.generate(LoginClient::class.java)
 
-    fun login(userName:String, password:String):LiveData<Boolean> {
+    suspend fun login(userName:String, password:String):Boolean {
 
-        val result = MutableLiveData(false)
-        val call = client.login(Login(userName, password))
-
-        call.enqueue(object : Callback<LoginResult> {
-
-            override fun onFailure(call: Call<LoginResult>, t: Throwable) {
-                result.value = false
-                t.printStackTrace()
-                throw t
+        try {
+            client.login(Login(userName, password)).execute().body()?.also {
+                ClientContext.loginUser = it.user
+                ClientContext.token = it.token
             }
 
-            override fun onResponse(call: Call<LoginResult>, response: Response<LoginResult>) {
-                response.body()?.also {
-                    ClientContext.loginUser = it.user
-                    ClientContext.token = it.token
-
-                    result.value = true
-                }
-            }
-
-        })
-
-        return result
+            return true
+        } catch (t:Throwable) {
+            t.printStackTrace()
+        }
+        return false
     }
 }

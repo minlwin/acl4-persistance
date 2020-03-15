@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/application"
+    app:startDestination="@id/types">
+
+    <fragment
+        android:id="@+id/types"
+        android:name="com.jdc.product.app.ui.fragment.TypesFragment"
+        android:label="Types"
+        tools:layout="@layout/fragment_types" />
+    <fragment
+        android:id="@+id/categories"
+        android:name="com.jdc.product.app.ui.fragment.CategoriesFragment"
+        android:label="Categories"
+        tools:layout="@layout/fragment_categories" />
+    <fragment
+        android:id="@+id/products"
+        android:name="com.jdc.product.app.ui.fragment.ProductsFragment"
+        android:label="Products"
+        tools:layout="@layout/fragment_products" />
+    <action
+        android:id="@+id/action_global_types"
+        app:destination="@id/types"
+        app:enterAnim="@anim/fragment_open_enter"
+        app:exitAnim="@anim/fragment_close_exit"
+        app:popUpTo="@id/types"
+        app:popUpToInclusive="true"
+        app:popEnterAnim="@anim/fragment_fade_enter"
+        app:popExitAnim="@anim/fragment_fade_exit"
+        app:launchSingleTop="true" />
+    <action
+        android:id="@+id/action_global_categories"
+        app:destination="@id/categories"
+        app:enterAnim="@anim/fragment_open_enter"
+        app:exitAnim="@anim/fragment_close_exit"
+        app:launchSingleTop="true"
+        app:popEnterAnim="@anim/fragment_fade_enter"
+        app:popExitAnim="@anim/fragment_fade_exit"
+        app:popUpTo="@id/categories"
+        app:popUpToInclusive="true" />
+    <action
+        android:id="@+id/action_global_products"
+        app:destination="@id/products"
+        app:enterAnim="@anim/fragment_open_enter"
+        app:exitAnim="@anim/fragment_close_exit"
+        app:popUpTo="@id/products"
+        app:popUpToInclusive="true"
+        app:popEnterAnim="@anim/fragment_fade_enter"
+        app:popExitAnim="@anim/fragment_fade_exit"
+        app:launchSingleTop="true" />
+    <fragment
+        android:id="@+id/edit_category"
+        android:name="com.jdc.product.app.ui.fragment.CategoryEditFragment"
+        android:label="Edit Category"
+        tools:layout="@layout/fragment_category_edit" />
+    <fragment
+        android:id="@+id/edit_product"
+        android:name="com.jdc.product.app.ui.fragment.ProductEditFragment"
+        android:label="Edit Product"
+        tools:layout="@layout/fragment_product_edit" />
+</navigation>

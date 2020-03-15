@@ -1,9 +1,12 @@
 package com.jdc.product.api.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import com.jdc.product.api.base.BaseService;
 import com.jdc.product.api.entity.Category;
@@ -15,12 +18,18 @@ public class CategoryService extends BaseService<Category, Integer> {
 	@Autowired
 	public CategoryService(CategoryRepo repo) {
 		super(repo);
-		myRepo = repo;
 	}
 
-	private CategoryRepo myRepo;
-
 	public List<Category> findByType(String type) {
-		return myRepo.findByType(type);
+		
+		StringBuffer sb = new StringBuffer("select c from Category c where 1 = 1");
+		Map<String, Object> params = new HashMap<>();
+		
+		if(!StringUtils.isEmpty(type)) {
+			sb.append(" and LOWEr(c.type) like :type");
+			params.put("type", type.toLowerCase().concat("%"));
+		}
+		
+		return repo.search(sb.toString(), params);
 	}
 }

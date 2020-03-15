@@ -7,7 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 public class BaseService<T, ID extends Number> {
 	
-	private BaseRepository<T, ID> repo;
+	protected BaseRepository<T, ID> repo;
 	
 	public BaseService(BaseRepository<T, ID> repo) {
 		this.repo = repo;

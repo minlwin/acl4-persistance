@@ -4,27 +4,23 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
+import com.jdc.product.api.base.BaseService;
 import com.jdc.product.api.entity.Category;
 import com.jdc.product.api.repo.CategoryRepo;
 
 @Service
-public class CategoryService {
+public class CategoryService extends BaseService<Category, Integer> {
 
 	@Autowired
-	private CategoryRepo repo;
-
-	public List<Category> findAll() {
-		return repo.findAll();
+	public CategoryService(CategoryRepo repo) {
+		super(repo);
+		myRepo = repo;
 	}
 
-	@Transactional
-	public Category save(Category c) {
-		return repo.save(c);
-	}
+	private CategoryRepo myRepo;
 
 	public List<Category> findByType(String type) {
-		return repo.findByType(type);
+		return myRepo.findByType(type);
 	}
 }

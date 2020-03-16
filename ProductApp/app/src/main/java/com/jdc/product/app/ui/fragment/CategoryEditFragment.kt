@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import com.google.android.material.snackbar.Snackbar
 
 import com.jdc.product.app.R
 import com.jdc.product.app.databinding.FragmentCategoryEditBinding
@@ -41,6 +42,13 @@ class CategoryEditFragment : Fragment() {
         types.types.observe(viewLifecycleOwner, Observer {
             adapter.clear()
             adapter.addAll(it)
+        })
+
+        model.error.observe(viewLifecycleOwner, Observer {
+            if(it.isNotEmpty()) {
+                Snackbar.make(view, it, Snackbar.LENGTH_SHORT).show()
+                model.error.value = ""
+            }
         })
 
     }

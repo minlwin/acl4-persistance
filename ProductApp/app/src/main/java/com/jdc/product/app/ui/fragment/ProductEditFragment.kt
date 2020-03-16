@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import com.google.android.material.snackbar.Snackbar
 
 import com.jdc.product.app.R
 import com.jdc.product.app.databinding.FragmentProductEditBinding
@@ -54,9 +55,16 @@ class ProductEditFragment : Fragment() {
         }}
 
         typeSelect.setOnItemClickListener { _, _, position, _ ->
-            typesModel.types?.value?.also {
+            typesModel.types.value?.also {
                 categoriesModel.type.value = it[position]
             }
         }
+
+        productModel.error.observe(viewLifecycleOwner, Observer {
+            if(it.isNotEmpty()) {
+                Snackbar.make(view, it, Snackbar.LENGTH_SHORT).show()
+                productModel.error.value = ""
+            }
+        })
     }
 }

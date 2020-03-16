@@ -11,7 +11,7 @@ class CategoriesModel:ViewModel() {
 
     private val service = CategoryService()
 
-    val type = MutableLiveData<String>()
+    val type = MutableLiveData<String>("")
     val list = type.switchMap { if(it.isEmpty()) findAll() else findByType(it) }
 
     private fun findAll():LiveData<List<Category>> {
